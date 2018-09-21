@@ -1,0 +1,248 @@
+<html>
+<style>
+
+ h2, h3, h4, h5{
+ text-align: center;
+
+ line-height: 20px;
+}
+div{
+  border-color: rgba(1,1,1,0.2);
+
+}
+/* unvisited link */
+a:link {
+   color: black;
+   text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+   color: black;
+   text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+   color: black;
+   text-decoration: none;
+}
+
+/* selected link */
+a:active {
+   color: black;
+   text-decoration: none;
+}
+.e:hover{
+   background-color:rgba(0,0,0,0.04);
+
+       }
+       .topbar{
+       display:block;
+
+       height:303px;
+       }
+       .topbar2{
+       display:block;
+       height:40px;
+       }
+       .e{
+         display:block;
+         height:83px;
+       }
+       .block-left { float: left; }
+.block-right { float: right; }
+h2 {
+text-align: center;
+}
+
+
+.p {
+text-align: center;
+padding-top: 130px;
+}
+</style>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="/jquery.min.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <script src="https://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+  <link rel="stylesheet" href="/css/app.sms.css" type="text/css"> </head>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-light bg-primary">
+    <div class="container">
+      <a class="navbar-brand text-white" style="padding-top:15px;" href="#">AT&T Hackaton</a>
+
+    </div>
+  </nav>
+  <div class="py-5" style="padding-bottom:0px !important">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+
+          <h1 class="text-primary text-center"><img src="/images/ibm_watson2.png" style="margin-right:10px;margin-bottom:10px" width="35px" height="35px"><b>Smart</b> Media Search</h1>
+          <p class="lead text-center"> </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5  section opaque opaque-fade-out">
+
+
+    <div class="container">
+      <div style="" class="col-md-12">
+        <div style="width:100%">
+          <form id="messageForm" class="form-inline">
+
+
+              <input id="messageInput" required type="text" class="form-control" style="width:85%" placeholder="Say or Type Something...">
+              <div style="width:15%;text-align:center" >
+                <img src="/images/speaker2.png" style="float:right" alt="Speaker" width="42" height="42">
+            </div> </form>
+
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+    <div class="container">
+      <div id="watson" class='col-md-12'>
+        <p id="selfParagraph" ><strong>Me: </strong><span id="selfRequest"></span></p>
+        <p id="watsonParagraph" ><strong>Watson: </strong><span id="watsonResponse"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <style>
+  #moviesGrid {
+    opacity: 0;
+    position: relative;
+    width: 100%;
+    left: -10%;
+}
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.demo {
+  margin: 0 auto;
+  padding-top: 64px;
+  max-width: 640px;
+  width: 94%;
+}
+
+.demo h1 {
+  margin-top: 0;
+}
+
+/**
+ * Footer Styles
+ */
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+}
+  </style>
+
+
+  <div class="py-5 bg-inverse" style="padding:0px !important">
+      <div class="container">
+
+        <div class=" " style="white-space:nowrap">
+
+              <div id="moviesGrid"style="">
+
+          </div>
+  				</div>
+      </div>
+      </div>
+
+    <div  class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+      <div style="top:25%" class="modal-dialog">
+        <div class="modal-content">
+          <div class="" >
+            <h4 id="detailTitle" class="modal-title" id="myModalLabel"></h4>
+            <hr>
+          </div>
+          <div class="" style="padding:10px">
+            <div class='block-right'>
+            <img id="detailImage" style='top:10px;padding-right:5px;' height="125" width="100px" ></img>
+            </div>
+            <h3 style="display: inline;"><strong>Actors:</strong> </h3><h4 id="detailActors" style="display: inline;"></h4><br>
+            <h3 style="display: inline;"><strong>Director: </strong></h3><h5 id="detailDirector" style="display: inline;"></h5><br>
+            <h3 style="display: inline;"><strong>Genre: </strong></h3><h5 id="detailGenre" style="display: inline;"></h5><br>
+            <h3 style="display: inline;"><strong>Duration: </strong></h3><h5 id="detailDuration" style="display: inline;"></h5><br>
+            <h3 style="display: inline;"><strong>Rate: </strong></h3><h5 id="detailRating" style="display: inline;"></h5><br>
+
+          </div>
+          <hr style="margin:6px" width="0px">
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--<div class="container">
+      <div class="row">
+        <div class="col-md-12"> </div>
+      </div>
+    </div>
+  </div>-->
+  <div class="py-5 bg-inverse">
+
+
+  </div>
+  <div class="bg-primary text-center p-0 footer" style="">
+    <div class="container" style="padding:20px">
+      <div class="row" style="height:50px !important;">
+        <div class="col-4 col-md-4" style="padding-top:10px" >
+          <img class="img-fluid d-block float-center" width="80px" height="50px" src="/images/dtv2.png">
+        </div>
+        <div class="col-4 col-md-4" style="bottom:15px ">
+          <img class="img-fluid" width="80px" height="50px" src="/images/brasil2.png">
+        </div>
+        <div class="col-4 col-md-4">
+          <img class="img-fluid d-block float-right" width="80px" height="50px" src="/images/ibm_flag2.png">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+  <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+  <script src="/js/conversation.js" type="text/javascript"></script>
+
+</body>
+
+</html>
